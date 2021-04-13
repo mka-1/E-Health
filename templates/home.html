@@ -98,7 +98,9 @@
           font-size: 25px;
           color: tomato;
         }
-
+        #login-button{
+          color: blue;
+        }
 
     </style>
 
@@ -112,6 +114,9 @@
 </head>
 
   <body>
+
+
+
 
 
 
@@ -150,6 +155,7 @@
         <div class="welcome">
 
          Consult your doctor online!
+              <a href = "login" id="login-button">Log in</a>
 
 
         </div>
@@ -235,36 +241,41 @@
 
             <div class="form-group">
               <label for="exampleInputName2">Your full name</label>
-              <input type="text" class="form-control" id="exampleInputName2" placeholder="Full name">
+              <input type="text" class="form-control" name="exampleInputName2" placeholder="Full name">
             </div>
 
               <div class="form-group">
               <label for="exampleInputFamily2">Your last name</label>
-              <input type="text" class="form-control" id="exampleInputFamily2" placeholder="Last name">
+              <input type="text" class="form-control" name="exampleInputFamily2" placeholder="Last name">
                 </div>
 
 
             <div class="form-group">
               <label for="exampleInputEmail2">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="email" class="form-control" name="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
 
             </div>
 
             <div class="form-group">
               <label for="exampleInputPassword2">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+              <input type="password" class="form-control" name="exampleInputPassword2" placeholder="Password">
+            </div>
+
+              <div class="form-group">
+              <label for="confirmation2">Confirm Password</label>
+              <input type="password" class="form-control" name="confirmation2" placeholder="Confirm Password">
             </div>
 
 
             <div class="form-group">
               <label for="exampleInputSpeci1">Specialization</label>
-              <input type="text" class="form-control" id="exampleInputSpeci1" placeholder="Specialization">
+              <input type="text" class="form-control" name="exampleInputSpeci1" placeholder="Specialization">
             </div>
 
 
             <div class="form-group">
               <label for="Hospital">Hospital</label>
-              <select id="Hospital" class="form-control">
+              <select name="Hospital" class="form-control">
                 <option selected>Choose</option>
                 <option>AUBMC</option>
                 <option>Hotel-Dieu de France</option>
@@ -284,6 +295,8 @@
           </form>
 
         </div>
+
+
 
      {% if messages %}
     <ul class="messages">
