@@ -20,6 +20,9 @@ class DoctorInfo(models.Model):
     specialization = models.CharField(max_length=500)
     hospital = models.CharField(max_length=100)
 
+# class ConfirmedAppointment(models.Model):
+
+
 
 
 
