@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+</head>
+<body>
+
+<div class="main">
+
+    {% for data in dataset %}
+
+    {{ data.time }}<br/>
+    {{ data.name }}<br/>
+    {{ data.drname }}<br/>
+    {{ data.description }}<br/>
+    <hr/>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
