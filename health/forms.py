@@ -12,6 +12,7 @@ class Apptform(forms.ModelForm):
         # specify fields to be used
         fields = [
             "time",
+            "email",
             "name",
             "drname",
             "description"

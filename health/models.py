@@ -23,6 +23,7 @@ class DoctorInfo(models.Model):
 class ConfirmedAppointment(models.Model):
     time = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
     drname = models.CharField(max_length=100)
     description = models.TextField()
 

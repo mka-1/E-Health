@@ -27,9 +27,11 @@ def create_view(request):
     form = Apptform(request.POST or None)
     if form.is_valid():
         form.save()
+        return HttpResponseRedirect("/appt")
 
     context['form'] = form
     return render(request, "create_view.html", context)
+
 
 
 def detail_view(request, id):
@@ -68,7 +70,7 @@ def update_view(request, id):
     # redirect to detail_view
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/" + id)
+        return HttpResponseRedirect("/appt")
 
     # add form dictionary to context
     context["form"] = form
@@ -90,7 +92,7 @@ def delete_view(request, id):
         obj.delete()
         # after deleting redirect to
         # home page
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/appt")
 
     return render(request, "delete_view.html", context)
 
@@ -108,8 +110,8 @@ def client(request):
         weight_client = request.POST['exampleInputWeight1']
 
         if password_client == confirmation_client:
-            if ClientInfo.objects.filter(name=firstName_client).exists():
-                messages.add_message(request, messages.INFO, 'name is taken')
+            if ClientInfo.objects.filter(name=email_client).exists():
+                messages.add_message(request, messages.INFO, 'email is taken')
                 return redirect('/')
 
             else:
