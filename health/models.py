@@ -11,6 +11,7 @@ class ClientInfo(models.Model):
     birth = models.DateField()
 
 
+
 class DoctorInfo(models.Model):
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)

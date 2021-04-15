@@ -54,6 +54,16 @@ def list_view(request):
 
     return render(request, "list_view.html", context)
 
+def list_view_admin(request):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # add the dictionary during initialization
+    context["dataset"] = ConfirmedAppointment.objects.all()
+
+    return render(request, "list_view_admin.html", context)
+
 
 def update_view(request, id):
     # dictionary for initial data with
