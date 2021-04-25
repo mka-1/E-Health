@@ -8,14 +8,16 @@ from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
 
-
 from django.http import HttpResponse
 # Create your views here.
-from health.models import ClientInfo, DoctorInfo
+
+from ClientReg.models import ClientInfo
+from DoctorReg.models import DoctorInfo
 
 
 def index(request):
-    return render(request,'index.html')
+    return render(request, 'index.html')
+
 
 def home(request):
     return render(request, 'home.html')
@@ -33,7 +35,6 @@ def create_view(request):
     return render(request, "create_view.html", context)
 
 
-
 def detail_view(request, id):
     # dictionary for initial data with
     # field names as keys
@@ -44,6 +45,7 @@ def detail_view(request, id):
 
     return render(request, "detail_view.html", context)
 
+
 def list_view(request):
     # dictionary for initial data with
     # field names as keys
@@ -53,6 +55,7 @@ def list_view(request):
     context["dataset"] = ConfirmedAppointment.objects.all()
 
     return render(request, "list_view.html", context)
+
 
 def list_view_admin(request):
     # dictionary for initial data with
@@ -106,9 +109,10 @@ def delete_view(request, id):
 
     return render(request, "delete_view.html", context)
 
-def client(request):
 
+def client(request):
     if request.method == 'POST':
+        username_client = request.POST['username']
         firstName_client = request.POST['exampleInputName1']
         lastName_client = request.POST['exampleInputFamily1']
         email_client = request.POST['exampleInputEmail1']
@@ -126,7 +130,8 @@ def client(request):
 
             else:
 
-                client_person = ClientInfo(name=firstName_client,
+                client_person = ClientInfo(username=username_client,
+                                           name=firstName_client,
                                            family=lastName_client,
                                            birth=dob_client,
                                            confirmation=confirmation_client,
@@ -134,7 +139,7 @@ def client(request):
                                            conditions=conditions_client
                                            )
                 client_person.save()
-                return render(request, 'clientPage.html')
+                return render(request, 'clientPage.html', {'clientObj': client_person})
 
         else:
             messages.info(request, 'passwords are not matching')
@@ -142,10 +147,7 @@ def client(request):
             return redirect('/')
 
 
-
 def doctor(request):
-
-
     if request.method == 'POST':
         firstName_doctor = request.POST['exampleInputName2']
         lastName_doctor = request.POST['exampleInputFamily2']
@@ -156,7 +158,7 @@ def doctor(request):
         hospitals = request.POST['Hospital']
 
         if password_doctor == confirmation_doctor:
-            if DoctorInfo.objects.filter(firstname=firstName_doctor).exists(): #see if username exists basically
+            if DoctorInfo.objects.filter(firstname=firstName_doctor).exists():  # see if username exists basically
                 messages.add_message(request, messages.INFO, 'name is taken')
                 return redirect('/')
 
@@ -180,13 +182,12 @@ def doctor(request):
     return render(request, 'doctorPage.html')
 
 
-
 def login(request):
     if request.method == 'POST':
-        username = request.POST['nameLogin']
+        username = request.POST['usernameLogin']
         password = request.POST['passwordLogin']
 
-        if ClientInfo.objects.filter(name = username, password = password).exists():
+        if ClientInfo.objects.filter(username=username, password=password).exists():
             return render(request, 'ClientPage.html')
         else:
             messages.add_message(request, messages.INFO, 'invalid credentials')

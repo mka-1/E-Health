@@ -78,10 +78,15 @@
                         <div class="col-md col-sm-12 form-group" data-for="firstName">
                             <input type="text" name="exampleInputName1" placeholder="First Name" data-form-field="name" class="form-control" value="" id="name-form5-m">
                         </div>
+
 						<div class="col-md col-sm-12 form-group" data-for="lastName">
                             <input type="text" name="exampleInputFamily1" placeholder="Last Name" data-form-field="name" class="form-control" value="" id="name-form5-m">
                         </div>
                     </div>
+                    <div class="dragArea row">
+                        <div class="col-md col-sm-12 form-group" data-for="username">
+                            <input type="text" name="username" placeholder="Username" data-form-field="name" class="form-control" value="" id="name-form5-m">
+                        </div>
 					<div class="dragArea row">
                         <div class="col-md col-sm-12 form-group" data-for="email">
                             <input type="email" name="exampleInputEmail1" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form5-m">
@@ -100,10 +105,10 @@
                     </div>
 					<div class="dragArea row">
                         <div class="col-md col-sm-12 form-group" data-for="height">
-                            <input type="number" name="exampleInputHeight1" placeholder="Your Height" data-form-field="number" class="form-control" value="" id="name-form5-m">
+                            <input type="number" name="exampleInputHeight1" placeholder="Your Height" data-form-field="number" class="form-control" value="" id="name-form5-m"   onkeyup="if(this.value<0){this.value = this.value*-1}">
                         </div>
 						<div class="col-md col-sm-12 form-group" data-for="cpassword">
-                            <input type="number" name="exampleInputWeight1" placeholder="Your Weight" data-form-field="number" class="form-control" value="" id="name-form5-m">
+                            <input type="number" name="exampleInputWeight1" placeholder="Your Weight" data-form-field="number" class="form-control" value="" id="name-form5-m" onkeyup="if(this.value<0){this.value = this.value*-1}">
                         </div>
                     </div>
 					<div class="col-12 form-group" data-for="textarea">

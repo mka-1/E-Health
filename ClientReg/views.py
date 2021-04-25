@@ -10,8 +10,8 @@ def clientRegPage(request):
     return render(request, '[CLIENTREG]home.html')
 
 def clientRegProcess(request):
-
     if request.method == 'POST':
+        username_client = request.POST['username']
         firstName_client = request.POST['exampleInputName1']
         lastName_client = request.POST['exampleInputFamily1']
         email_client = request.POST['exampleInputEmail1']
@@ -23,13 +23,14 @@ def clientRegProcess(request):
         weight_client = request.POST['exampleInputWeight1']
 
         if password_client == confirmation_client:
-            if ClientInfo.objects.filter(name=firstName_client).exists():
-                messages.add_message(request, messages.INFO, 'name is taken')
+            if ClientInfo.objects.filter(name=email_client).exists():
+                messages.add_message(request, messages.INFO, 'email is taken')
                 return redirect('/')
 
             else:
 
-                client_person = ClientInfo(name=firstName_client,
+                client_person = ClientInfo(username=username_client,
+                                           name=firstName_client,
                                            family=lastName_client,
                                            birth=dob_client,
                                            confirmation=confirmation_client,
@@ -37,9 +38,10 @@ def clientRegProcess(request):
                                            conditions=conditions_client
                                            )
                 client_person.save()
-                return render(request, 'clientPage.html')
+                return render(request, 'clientPage.html', {'client_person': client_person})
 
         else:
             messages.info(request, 'passwords are not matching')
 
             return redirect('/')
+
