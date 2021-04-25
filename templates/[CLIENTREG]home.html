@@ -121,6 +121,15 @@
             </div>
         </div>
     </div>
+
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
 </section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/x" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Designed with Mobirise <a href="https://mobirise.site/u" style="color:#aaa;">web</a> theme</p></section><script src="{% static 'assetsClientRegPage/web/assets/jquery/jquery.min.js' %}"></script>  <script src="{% static 'assetsClientRegPage/popper/popper.min.js' %}"></script>  <script src="{% static 'assetsClientRegPage/tether/tether.min.js' %}"></script>  <script src="{% static 'assetsClientRegPage/bootstrap/js/bootstrap.min.js' %}"></script>  <script src="{% static 'assetsClientRegPage/smoothscroll/smooth-scroll.js' %}"></script>  <script src="{% static 'assetsClientRegPage/dropdown/js/nav-dropdown.js' %}"></script>  <script src="{% static 'assetsClientRegPage/dropdown/js/navbar-dropdown.js' %}"></script>  <script src="{% static 'assetsClientRegPage/touchswipe/jquery.touch-swipe.min.js' %}"></script>  <script src="{% static 'assetsClientRegPage/formstyler/jquery.formstyler.js' %}"></script>  <script src="{% static 'assetsClientRegPage/formstyler/jquery.formstyler.min.js' %}"></script>  <script src="{% static 'assetsClientRegPage/datepicker/jquery.datetimepicker.full.js' %}"></script>  <script src="{% static 'assetsClientRegPage/theme/js/script.js' %}"></script>  <script src="{% static 'assetsClientRegPage/formoid/formoid.min.js' %}"></script>
 
 

@@ -9,6 +9,7 @@ from ClientReg.models import ClientInfo
 def clientRegPage(request):
     return render(request, '[CLIENTREG]home.html')
 
+
 def clientRegProcess(request):
     if request.method == 'POST':
         username_client = request.POST['username']
@@ -23,10 +24,14 @@ def clientRegProcess(request):
         weight_client = request.POST['exampleInputWeight1']
 
         if password_client == confirmation_client:
-            if ClientInfo.objects.filter(name=email_client).exists():
+            if ClientInfo.objects.filter(email=email_client).exists():
                 messages.add_message(request, messages.INFO, 'email is taken')
                 return redirect('/')
 
+
+            elif ClientInfo.objects.filter(username=username_client).exists():
+                messages.add_message(request, messages.INFO, 'username is taken')
+                return redirect('/')
             else:
 
                 client_person = ClientInfo(username=username_client,
@@ -35,7 +40,9 @@ def clientRegProcess(request):
                                            birth=dob_client,
                                            confirmation=confirmation_client,
                                            password=password_client,
-                                           conditions=conditions_client
+                                           conditions=conditions_client,
+                                           height=height_client,
+                                           weight=weight_client
                                            )
                 client_person.save()
                 return render(request, 'clientPage.html', {'client_person': client_person})
@@ -44,4 +51,3 @@ def clientRegProcess(request):
             messages.info(request, 'passwords are not matching')
 
             return redirect('/')
-
