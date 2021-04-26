@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Info</title>
+</head>
+<body>
+
+<div class="main">
+
+    {% for data in dataset %}
+    firstname: {{ data.firstname }}<br/>
+    lastname: {{ data.lastname }}<br/>
+    emailDr: {{ data.emailDr }}<br/>
+    hospital: {{ data.hospital }}<br/>
+    specialization: {{ data.specialization }}<br/>
+    <br/>
+        <hr/>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

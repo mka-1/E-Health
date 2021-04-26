@@ -25,6 +25,16 @@ def home(request):
     return render(request, 'home.html')
 
 
+def drfinder(request):
+    context = {}
+
+    # add the dictionary during initialization
+    context["dataset"] = DoctorInfo.objects.all()
+
+    return render(request, 'd_finder.html', context)
+
+
+
 def adminportal(request):
     return render(request, 'adminportal.html')
 
@@ -46,6 +56,7 @@ def admin_p(request):
 
     return render(request, "admin_p.html", context)
 
+
 def create_view_pt(request):
     context = {}
 
@@ -57,6 +68,7 @@ def create_view_pt(request):
     context['form'] = form
     return render(request, "create_view_pt.html", context)
 
+
 def create_view_dr(request):
     context = {}
 
@@ -67,6 +79,7 @@ def create_view_dr(request):
 
     context['form'] = form
     return render(request, "create_view_dr.html", context)
+
 
 def update_view_pt(request, id):
     # dictionary for initial data with
@@ -90,6 +103,7 @@ def update_view_pt(request, id):
 
     return render(request, "update_view_pt.html", context)
 
+
 def update_view_dr(request, id):
     # dictionary for initial data with
     # field names as keys
@@ -112,6 +126,7 @@ def update_view_dr(request, id):
 
     return render(request, "update_view_dr.html", context)
 
+
 def delete_view_pt(request, id):
     # dictionary for initial data with
     # field names as keys
@@ -128,6 +143,7 @@ def delete_view_pt(request, id):
         return HttpResponseRedirect("/adminportal/p")
 
     return render(request, "delete_view_pt.html", context)
+
 
 def delete_view_dr(request, id):
     # dictionary for initial data with
@@ -327,9 +343,11 @@ def doctor(request):
             return redirect('/')
     return render(request, 'doctorPage.html')
 
+
 class Dummy():
-    def __init__(self,name):
-        self.name=name
+    def __init__(self, name):
+        self.name = name
+
 
 def login(request):
     if request.method == 'POST':
