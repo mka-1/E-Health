@@ -1,5 +1,5 @@
 from django import forms
-from .models import DoctorInfo
+from DoctorReg.models import DoctorInfo
 
 
 # creating a form
@@ -17,5 +17,6 @@ class drform(forms.ModelForm):
             "confirmation",
             "emailDr",
             "specialization",
-            "hospital"
+            "hospital",
+            "dob"
         ]
