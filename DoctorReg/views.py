@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from DoctorReg.models import DoctorInfo
+from health.models import ConfirmedAppointment
+
 
 def doctorRegPage(request):
     return render(request, '[DOCTORREG]home.html')
@@ -16,10 +18,11 @@ def doctorRegProcess(request):
         confirmation_doctor = request.POST['confirmation2']
         specs_doctor = request.POST['exampleInputSpeci1']
         hospitals = request.POST['Hospital']
-        dob_doctor = request.POST['exampleInputDate1']
+        usernameDr = request.POST['usernameDr']
+        dob = request.POST['exampleInputDate1']
 
         if password_doctor == confirmation_doctor:
-            if DoctorInfo.objects.filter(firstname=firstName_doctor).exists(): #see if username exists basically
+            if DoctorInfo.objects.filter(usernameDr=usernameDr).exists():  # see if username exists basically
                 messages.add_message(request, messages.INFO, 'name is taken')
                 return redirect('/')
 
@@ -27,18 +30,28 @@ def doctorRegProcess(request):
 
                 doctor_person = DoctorInfo(firstname=firstName_doctor,
                                            lastname=lastName_doctor,
-                                           dob=dob_doctor,
                                            specialization=specs_doctor,
                                            confirmation=confirmation_doctor,
                                            password=password_doctor,
                                            emailDr=email_doctor,
-                                           hospital=hospitals
+                                           hospital=hospitals,
+                                           usernameDr=usernameDr,
+                                           dob=dob
                                            )
                 doctor_person.save()
-                return render(request, 'doctorPage.html')
+                # dictionary for initial data with
+                # field names as keys
+                context = {}
+
+                # add the dictionary during initialization
+                context["dataset"] = ConfirmedAppointment.objects.all()
+
+                return render(request, 'doctorPage.html', context)
 
         else:
             messages.add_message(request, messages.INFO, 'passwords are not matching')
 
             return redirect('/')
     return render(request, 'doctorPage.html')
+
+
