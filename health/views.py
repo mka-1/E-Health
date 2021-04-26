@@ -327,14 +327,18 @@ def doctor(request):
             return redirect('/')
     return render(request, 'doctorPage.html')
 
+class Dummy():
+    def __init__(self,name):
+        self.name=name
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST['usernameLogin']
+        name = request.POST['usernameLogin']
         password = request.POST['passwordLogin']
 
-        if ClientInfo.objects.filter(username=username, password=password).exists():
-            return render(request, 'ClientPage.html')
+        if ClientInfo.objects.filter(username=name, password=password).exists():
+            client_person = Dummy(name)
+            return render(request, 'ClientPage.html', {'client_person': client_person})
         else:
             messages.add_message(request, messages.INFO, 'invalid credentials')
             return redirect('login')
