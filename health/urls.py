@@ -8,6 +8,7 @@ urlpatterns = [
     path('client', views.client, name='client'),
     path('doctor', views.doctor, name='doctor'),
     path('login', views.login, name='login'),
+    path('loginDr', views.loginDr, name='loginDr'),
     path('appt/create', views.create_view, name='appt'),
     path('drfinder', views.drfinder, name='doctor finder'),
     path('appt', views.list_view, name='list'),

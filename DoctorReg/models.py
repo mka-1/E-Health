@@ -5,6 +5,7 @@ from django.db import models
 class DoctorInfo(models.Model):
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
+    usernameDr = models.CharField(max_length=50)
     password = models.CharField(max_length=32)
     confirmation = models.CharField(max_length=32)
     emailDr = models.CharField(max_length=60)

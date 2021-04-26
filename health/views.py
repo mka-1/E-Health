@@ -311,6 +311,7 @@ def doctor(request):
         confirmation_doctor = request.POST['confirmation2']
         specs_doctor = request.POST['exampleInputSpeci1']
         hospitals = request.POST['Hospital']
+        usernameDr = request.POST['usernameDr']
 
         if password_doctor == confirmation_doctor:
             if DoctorInfo.objects.filter(firstname=firstName_doctor).exists():  # see if username exists basically
@@ -325,7 +326,8 @@ def doctor(request):
                                            confirmation=confirmation_doctor,
                                            password=password_doctor,
                                            emailDr=email_doctor,
-                                           hospital=hospitals
+                                           hospital=hospitals,
+                                           usernameDr=usernameDr
                                            )
                 doctor_person.save()
                 # dictionary for initial data with
@@ -363,3 +365,21 @@ def login(request):
 
     else:
         return render(request, 'login.html')
+
+
+
+def loginDr(request):
+    #print(request)
+    if request.method == 'POST':
+        usernameDr = request.POST['usernameLoginDr']
+        passwordDr = request.POST['passwordLoginDr']
+
+        if DoctorInfo.objects.filter(usernameDr=usernameDr, password=passwordDr).exists():
+            doctor_person = Dummy(usernameDr)
+            return render(request, 'doctorPage.html', {'doctor_person': doctor_person})
+        else:
+            messages.add_message(request, messages.INFO, 'invalid credentials')
+            return redirect('loginDr')
+
+    else:
+        return render(request, 'loginDr.html')
