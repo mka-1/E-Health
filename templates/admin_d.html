@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Info</title>
+</head>
+<body>
+
+<div class="main">
+
+
+    <a href="d/create">Add new entry</a> <br/> <br/>
+    {% for data in dataset %}
+    firstname: {{ data.firstname }}<br/>
+    lastname: {{ data.lastname }}<br/>
+    password: {{ data.password }} <br/>
+    confirmation: {{ data.confirmation }}<br/>
+    emailDr: {{ data.emailDr }}<br/>
+    hospital: {{ data.hospital }}<br/>
+    specialization: {{ data.specialization }}<br/> <br/>
+    <a href="{{ data.id }}/update">Modify entry</a>
+        - - <a href="{{ data.id }}/delete">Delete entry</a>
+        <hr/>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

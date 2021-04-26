@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, auth
 from django import forms
 from .models import ConfirmedAppointment
 from .forms import Apptform
+from .formdr import drform
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
@@ -21,6 +22,31 @@ def index(request):
 
 def home(request):
     return render(request, 'home.html')
+
+
+def adminportal(request):
+    return render(request, 'adminportal.html')
+
+
+def admin_d(request):
+    context = {}
+
+    # add the dictionary during initialization
+    context["dataset"] = DoctorInfo.objects.all()
+
+    return render(request, "admin_d.html", context)
+
+
+def create_view_dr(request):
+    context = {}
+
+    form = drform(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/adminportal/d")
+
+    context['form'] = form
+    return render(request, "create_view_dr.html", context)
 
 
 def create_view(request):
@@ -66,6 +92,15 @@ def list_view_admin(request):
     context["dataset"] = ConfirmedAppointment.objects.all()
 
     return render(request, "list_view_admin.html", context)
+
+
+def checkdr(request):
+    context = {}
+
+    # add the dictionary during initialization
+    context["dataset"] = ConfirmedAppointment.objects.all()
+
+    return render(request, "list_view_dr.html", context)
 
 
 def update_view(request, id):
@@ -179,7 +214,14 @@ def doctor(request):
                                            hospital=hospitals
                                            )
                 doctor_person.save()
-                return render(request, 'doctorPage.html')
+                # dictionary for initial data with
+                # field names as keys
+                context = {}
+
+                # add the dictionary during initialization
+                context["dataset"] = ConfirmedAppointment.objects.all()
+
+                return render(request, 'doctorPage.html', context)
 
         else:
             messages.add_message(request, messages.INFO, 'passwords are not matching')
