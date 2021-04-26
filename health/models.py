@@ -36,4 +36,5 @@ class ConfirmedAppointment(models.Model):
     drname = models.CharField(max_length=100)
     description = models.TextField()
     #approval = models.CharField(max_length=100)
+    #
 
