@@ -13,10 +13,15 @@
     {% for data in dataset %}
     ID number: {{ data.id }}<br/>
     Date & Time: {{ data.time }}<br/>
+    Patient username: {{ data.username }}<br/>
     Patient Email: {{ data.email }} <br/>
     Patient name: {{ data.name }}<br/>
     Doctor name: {{ data.drname }}<br/>
-    Case Description: {{ data.description }}<br/> <br/>
+    Case Description: {{ data.description }}<br/>
+    Doctor Approval: {{ data.approval }}<br/>
+    Completed: {{ data.done }}<br/>
+
+        <br/>
     <a href="{{ data.id }}/update">Modify entry</a>
         - - <a href="{{ data.id }}/delete">Delete entry</a>
         <hr/>

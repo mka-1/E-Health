@@ -14,8 +14,14 @@ class Apptform(forms.ModelForm):
             "time",
             "email",
             "name",
+            "username",
             "drname",
-            "description"
+            "description",
+            "approval",
+            "done",
+            "link"
         ]
+
+
 
 

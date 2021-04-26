@@ -8,7 +8,6 @@
 
 <div class="main">
 
-    <a href="appt/create">Add a new appointment</a> <br/> <br/>
     {% for data in dataset %}
     {% if data.drname == "samir" %}
     ID number: {{ data.id }}<br/>
@@ -16,12 +15,12 @@
     Patient Email: {{ data.email }} <br/>
     Patient name: {{ data.name }}<br/>
     Doctor name: {{ data.drname }}<br/>
-    Case Description: {{ data.description }}<br/> <br/>
-    <a href="appt/{{ data.id }}/update">Modify entry</a>
-        - - <a href="appt/{{ data.id }}/delete">Delete entry</a>
+    Case Description: {{ data.description }}<br/>
+    Approval:  {{ data.approval }}
+        <br/>
+    <a href="{{ data.id }}/approve">Change approval status</a>
         <hr/>
     {% endif %}
-
     {% endfor %}
 
 </div>
