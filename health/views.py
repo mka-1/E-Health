@@ -5,6 +5,7 @@ from django import forms
 from .models import ConfirmedAppointment
 from .forms import Apptform
 from .formdr import drform
+from .formpt import ptform
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
@@ -37,6 +38,25 @@ def admin_d(request):
     return render(request, "admin_d.html", context)
 
 
+def admin_p(request):
+    context = {}
+
+    # add the dictionary during initialization
+    context["dataset"] = ClientInfo.objects.all()
+
+    return render(request, "admin_p.html", context)
+
+def create_view_pt(request):
+    context = {}
+
+    form = ptform(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/adminportal/p")
+
+    context['form'] = form
+    return render(request, "create_view_pt.html", context)
+
 def create_view_dr(request):
     context = {}
 
@@ -47,6 +67,84 @@ def create_view_dr(request):
 
     context['form'] = form
     return render(request, "create_view_dr.html", context)
+
+def update_view_pt(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(ClientInfo, id=id)
+
+    # pass the object as instance in form
+    form = ptform(request.POST or None, instance=obj)
+
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/adminportal/p")
+
+    # add form dictionary to context
+    context["form"] = form
+
+    return render(request, "update_view_pt.html", context)
+
+def update_view_dr(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(DoctorInfo, id=id)
+
+    # pass the object as instance in form
+    form = drform(request.POST or None, instance=obj)
+
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/adminportal/d")
+
+    # add form dictionary to context
+    context["form"] = form
+
+    return render(request, "update_view_dr.html", context)
+
+def delete_view_pt(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(ClientInfo, id=id)
+
+    if request.method == "POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to
+        # home page
+        return HttpResponseRedirect("/adminportal/p")
+
+    return render(request, "delete_view_pt.html", context)
+
+def delete_view_dr(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(DoctorInfo, id=id)
+
+    if request.method == "POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to
+        # home page
+        return HttpResponseRedirect("/adminportal/d")
+
+    return render(request, "delete_view_dr.html", context)
 
 
 def create_view(request):

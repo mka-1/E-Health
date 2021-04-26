@@ -8,9 +8,10 @@
 
 <div class="main">
 
-
+    <a href="/adminportal">Go back to admin portal</a> <br/> <br/>
     <a href="d/create">Add new entry</a> <br/> <br/>
     {% for data in dataset %}
+    ID number: {{ data.id }}<br/>
     firstname: {{ data.firstname }}<br/>
     lastname: {{ data.lastname }}<br/>
     password: {{ data.password }} <br/>
@@ -20,8 +21,8 @@
     specialization: {{ data.specialization }}<br/>
     dob: {{ data.dob }}<br/>
     <br/>
-    <a href="{{ data.id }}/update">Modify entry</a>
-        - - <a href="{{ data.id }}/delete">Delete entry</a>
+    <a href="d/{{ data.id }}/update">Modify entry</a>
+        - - <a href="d/{{ data.id }}/delete">Delete entry</a>
         <hr/>
     {% endfor %}
 

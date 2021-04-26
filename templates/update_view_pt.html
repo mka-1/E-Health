@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update entry</title>
+</head>
+<body>
+
+<div class="main">
+    <!-- Create a Form -->
+    <form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+
+        <!-- form as paragraph -->
+        {{ form.as_p }}
+
+        <input type="submit" value="Update"/>
+        <a href="javascript:history.back()">Cancel</a>
+    </form>
+
+</div>
+
+</body>
+</html>

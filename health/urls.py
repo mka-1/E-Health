@@ -17,7 +17,11 @@ urlpatterns = [
     path('appt/<id>/delete', views.delete_view, name='delete'),
     path('adminportal', views.adminportal, name= 'Admin Portal'),
     path('adminportal/d', views.admin_d, name= 'database doctor'),
-    path('adminportal/d/create', views.create_view_dr, name='new entry dr')
-    #path('adminportal/p', views.admin_p, name= 'database patient'),
-
+    path('adminportal/d/create', views.create_view_dr, name='new entry dr'),
+    path('adminportal/d/<id>/delete', views.delete_view_dr, name='delete entry dr'),
+    path('adminportal/d/<id>/update', views.update_view_dr, name='update entry dr'),
+    path('adminportal/p', views.admin_p, name= 'database patient'),
+    path('adminportal/p/create', views.create_view_pt, name='new entry patient'),
+    path('adminportal/p/<id>/update', views.update_view_pt, name='update entry patient'),
+    path('adminportal/p/<id>/delete', views.delete_view_pt, name='delete entry patient'),
 ]
