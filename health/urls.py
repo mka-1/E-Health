@@ -9,12 +9,10 @@ urlpatterns = [
     path('doctor', views.doctor, name='doctor'),
     path('login', views.login, name='login'),
     path('loginDr', views.loginDr, name='loginDr'),
-    path('appt/create', views.create_view, name='appt'),
     path('drfinder', views.drfinder, name='doctor finder'),
     path('appt', views.list_view, name='list'),
     path('appt/check', views.checkdr, name="check appointments"),
-    path('appt/admin', views.list_view_admin, name='database appointments'),
-    path('appt/<id>', views.detail_view, name='detail'),
+    path('appt/create', views.create_view, name='appt'),
     path('appt/<id>/update', views.update_view, name='update'),
     path('appt/<id>/delete', views.delete_view, name='delete'),
     path('appt/<id>/approve', views.approve_view_dr, name='update entry dr'),
@@ -27,4 +25,9 @@ urlpatterns = [
     path('adminportal/p/create', views.create_view_pt, name='new entry patient'),
     path('adminportal/p/<id>/update', views.update_view_pt, name='update entry patient'),
     path('adminportal/p/<id>/delete', views.delete_view_pt, name='delete entry patient'),
+    path('adminportal/a', views.list_view_admin, name='database appointments'),
+    path('adminportal/a/create', views.create_view_admin, name='Create appt entry'),
+    path('adminportal/a/<id>/update', views.update_view_admin, name='update entry patient'),
+    path('adminportal/a/<id>/delete', views.delete_view_admin, name='update entry patient')
+
 ]
