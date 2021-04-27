@@ -18,7 +18,6 @@ class Apptform(forms.ModelForm):
             "drname",
             "description",
             "approval",
-            "done",
-            "link"
+            "done"
         ]
 
