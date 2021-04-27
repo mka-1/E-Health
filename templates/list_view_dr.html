@@ -34,7 +34,7 @@
 
     <a href="appt/create">Add a new appointment</a> <br/> <br/>
     {% for data in dataset %}
-    {% if data.drname == "samir" %}
+    {% if data.drname == username %}
     ID number: {{ data.id }}<br/>
     Date & Time: {{ data.time }}<br/>
     Patient Email: {{ data.email }} <br/>

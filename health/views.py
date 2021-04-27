@@ -219,7 +219,7 @@ def checkdr(request):
 
     # add the dictionary during initialization
     context["dataset"] = ConfirmedAppointment.objects.all()
-
+    context["username"] = request.COOKIES["username"]
     return render(request, "list_view_dr.html", context)
 
 
@@ -407,7 +407,9 @@ def loginDr(request):
 
         if DoctorInfo.objects.filter(usernameDr=usernameDr, password=passwordDr).exists():
             doctor_person = Dummy(usernameDr)
-            return render(request, 'doctorPage.html', {'doctor_person': doctor_person})
+            response = HttpResponse(render(request, 'doctorPage.html', {'doctor_person': doctor_person}))
+            response.set_cookie('username', usernameDr)
+            return response
         else:
             messages.add_message(request, messages.INFO, 'invalid credentials')
             return redirect('loginDr')
