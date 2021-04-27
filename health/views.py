@@ -199,6 +199,7 @@ def list_view(request):
 
     # add the dictionary during initialization
     context["dataset"] = ConfirmedAppointment.objects.all()
+    context["username"] = request.COOKIES["username"]
 
     return render(request, "list_view.html", context)
 
@@ -389,7 +390,9 @@ def login(request):
 
         if ClientInfo.objects.filter(username=name, password=password).exists():
             client_person = Dummy(name)
-            return render(request, 'ClientPage.html', {'client_person': client_person})
+            response = HttpResponse(render(request, 'ClientPage.html', {'client_person': client_person}))
+            response.set_cookie('username', name)
+            return response
         else:
             messages.add_message(request, messages.INFO, 'invalid credentials')
             return redirect('login')

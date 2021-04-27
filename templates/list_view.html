@@ -34,7 +34,7 @@
 
     <a href="appt/create">Add a new appointment</a> <br/> <br/>
     {% for data in dataset %}
-    {% if data.approval != "yes" %}
+    {% if data.approval != "yes" and data.name == username %}
 
     ID number: {{ data.id }}<br/>
     Date & Time: {{ data.time }}<br/>
@@ -55,7 +55,7 @@
 <div class="main">
 
     {% for data in dataset %}
-    {% if data.approval == "yes" %}
+    {% if data.approval == "yes" and data.name == username %}
     Date & Time: {{ data.time }}<br/>
     Doctor name: {{ data.drname }}<br/>
     Case Description: {{ data.description }}<br/>
