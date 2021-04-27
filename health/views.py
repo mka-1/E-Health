@@ -267,7 +267,7 @@ def update_view(request, id):
     obj = get_object_or_404(ConfirmedAppointment, id=id)
 
     # pass the object as instance in form
-    form = Apptform(request.POST or None, instance=obj)
+    form = Apptformr(request.POST or None, instance=obj)
 
     # save the data from the form and
     # redirect to detail_view
