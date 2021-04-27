@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+
+        body{
+          font-family: 'Quicksand', sans-serif;
+        }
+
+        .container{
+            position: relative;
+            height: 150px;
+            background-color: teal;
+            padding-top: 100px;
+
+            margin-left: 900px;
+            font-size: 20px;
+            font-weight:bold ;
+        }
+
+
+
+
+        a{
+          color: white;
+        }
+
+
+        #name{
+
+            padding-left: 15px;
+            height: 150px;
+            background-color: teal;
+            width:1200px;
+            float: left;
+            font-size: 85px;
+            font-weight:bold ;
+            color: tomato;
+
+        }
+
+
+        .welcome{
+          position: absolute;
+          font-size: 30px;
+          margin-left: 10px;
+          height: 30px;
+          background-color:white;
+          color: tomato;
+
+        }
+
+
+        .form1{
+          padding-top: 15px;
+          width:300px;
+          position: absolute;
+          margin-top: 70px;
+          margin-left: 410px;
+          font-size: 15px;
+          padding-bottom: 25px;
+
+
+
+        }
+
+        .form2{
+          width:300px;
+          padding-top: 15px;
+          margin-top: 70px;
+          margin-left: 900px;
+          font-size: 15px;
+          padding-bottom: 25px;
+
+
+        }
+
+
+        #patient-form{
+
+          font-size: 25px;
+          color: #ff6347;
+        }
+        #doctor-form{
+
+          font-size: 25px;
+          color: tomato;
+        }
+        #login-button{
+          color: blue;
+        }
+
+    </style>
+
+
+
+
+
+
+
+
+</head>
+
+  <body>
+
+
+
+
+
+
+
+
+      <div >
+
+        <p id="name">EHMS</p>
+
+
+
+      </div>
+
+      <div class=  "container" >
+
+
+              <ul class="nav">
+
+                  <li class="nav-item">
+                  <a class="nav-link active" href="http://127.0.0.1:8000/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="/aboutus">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="#">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="#">Staff Portal</a>
+                  </li>
+
+              </ul>
+        </div>
+
+
+        <div class="welcome">
+
+         Consult your doctor online!
+              <a href = "login" id="login-button">Log in</a>
+
+
+        </div>
+
+
+
+
+        <div class="form1">
+
+
+          <form action="client1" method="post">
+            {% csrf_token %}
+
+            <div id="patient-form">Are you a patient? Sign up now!</div>
+
+            <div class="form-group">
+              <label for="exampleInputName1">Your first name</label>
+              <input type="text" class="form-control" name="exampleInputName1" placeholder="First name">
+            </div>
+
+              <div class="form-group">
+              <label for="exampleInputFamily1">Your last name</label>
+              <input type="text" class="form-control" name="exampleInputFamily1" placeholder="Last name">
+                </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" name="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" name="exampleInputPassword1" placeholder="Password">
+            </div>
+
+              <div class="form-group">
+              <label for="confirmation1">Confirm your password</label>
+              <input type="password" class="form-control" name="confirmation1" placeholder="Password">
+            </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputConditions1">Medical Conditions</label>
+              <input type="text" class="form-control" name="exampleInputConditions1" placeholder="Conditions">
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="exampleInputDate1">Date of Birth</label>
+              <input type="date" class="form-control" name="exampleInputDate1" >
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputHeight1">Your Height</label>
+              <input type="number" class="form-control" name="exampleInputHeight1" placeholder="Height">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputWeight1">Your Weight</label>
+              <input type="number" class="form-control" name="exampleInputWeight1" placeholder="Weight">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>
+
+        </div>
+
+
+
+        <div class="form2">
+
+
+          <form action="doctor" method="post">
+              {% csrf_token %}
+
+
+            <div id="doctor-form">Are you a doctor? Sign up now!</div>
+
+            <div class="form-group">
+              <label for="exampleInputName2">Your full name</label>
+              <input type="text" class="form-control" name="exampleInputName2" placeholder="Full name">
+            </div>
+
+              <div class="form-group">
+              <label for="exampleInputFamily2">Your last name</label>
+              <input type="text" class="form-control" name="exampleInputFamily2" placeholder="Last name">
+                </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputEmail2">Email address</label>
+              <input type="email" class="form-control" name="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
+
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword2">Password</label>
+              <input type="password" class="form-control" name="exampleInputPassword2" placeholder="Password">
+            </div>
+
+              <div class="form-group">
+              <label for="confirmation2">Confirm Password</label>
+              <input type="password" class="form-control" name="confirmation2" placeholder="Confirm Password">
+            </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputSpeci1">Specialization</label>
+              <input type="text" class="form-control" name="exampleInputSpeci1" placeholder="Specialization">
+            </div>
+
+
+            <div class="form-group">
+              <label for="Hospital">Hospital</label>
+              <select name="Hospital" class="form-control">
+                <option selected>Choose</option>
+                <option>AUBMC</option>
+                <option>Hotel-Dieu de France</option>
+                <option>LAU Medical Center-Rizk Hospital</option>
+                <option>Rafik Hariri University Hospital</option>
+                <option>Saint George Hospital University Medical Center </option>
+              </select>
+            </div>
+
+
+
+
+
+
+
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>
+
+        </div>
+
+
+
+     {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>

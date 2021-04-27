@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+
+        body{
+          font-family: 'Quicksand', sans-serif;
+          margin-left: 25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<h2 > Pending Appointments</h2>
+<div class="main">
+
+    <a href="appt/create">Add a new appointment</a> <br/> <br/>
+    {% for data in dataset %}
+    {% if data.approval != "yes" %}
+
+    ID number: {{ data.id }}<br/>
+    Date & Time: {{ data.time }}<br/>
+    Patient Email: {{ data.email }} <br/>
+    Patient name: {{ data.name }}<br/>
+    Doctor name: {{ data.drname }}<br/>
+    Case Description: {{ data.description }}<br/>
+        <br/>
+    <a href="appt/{{ data.id }}/update">Modify entry</a>
+        - - <a href="appt/{{ data.id }}/delete">Delete entry</a>
+        <hr/>
+    {% endif %}
+    {% endfor %}
+
+</div>
+
+<h2 > Approved Appointments</h2>
+<div class="main">
+
+    {% for data in dataset %}
+    {% if data.approval == "yes" %}
+    Date & Time: {{ data.time }}<br/>
+    Doctor name: {{ data.drname }}<br/>
+    Case Description: {{ data.description }}<br/>
+    Link: <a href="{{ data.link }}">Join meeting</a><br/>
+        <br/>
+        <a href="appt/{{ data.id }}/delete">Delete entry</a>
+        <hr/>
+    {% endif %}
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
