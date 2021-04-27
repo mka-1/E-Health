@@ -28,7 +28,9 @@ urlpatterns = [
     path('adminportal/p/<id>/delete', views.delete_view_pt, name='delete entry patient'),
     path('adminportal/a', views.list_view_admin, name='database appointments'),
     path('adminportal/a/create', views.create_view_admin, name='Create appt entry'),
+    path('adminportal/a/submit', views.submitquery, name='Create appt entry'),
     path('adminportal/a/<id>/update', views.update_view_admin, name='update entry patient'),
     path('adminportal/a/<id>/delete', views.delete_view_admin, name='update entry patient')
+
 
 ]

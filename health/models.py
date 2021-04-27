@@ -39,5 +39,5 @@ class ConfirmedAppointment(models.Model):
     description = models.TextField()
     approval = models.CharField(max_length=100)
     done = models.CharField(max_length=100)
-    link = models.CharField(max_length=100)
+
 

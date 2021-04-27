@@ -26,6 +26,7 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
+
 def aboutus(request):
     return render(request, 'aboutus.html')
 
@@ -37,7 +38,6 @@ def drfinder(request):
     context["dataset"] = DoctorInfo.objects.all()
 
     return render(request, 'd_finder.html', context)
-
 
 
 def adminportal(request):
@@ -183,6 +183,7 @@ def create_view(request):
     context['dataset'] = DoctorInfo.objects.all()
     return render(request, "create_view.html", context)
 
+
 def create_view_admin(request):
     context = {}
 
@@ -239,6 +240,7 @@ def checkdr(request):
     context["username"] = request.COOKIES["username"]
     return render(request, "list_view_dr.html", context)
 
+
 def update_view_admin(request, id):
     # dictionary for initial data with
     # field names as keys
@@ -261,6 +263,7 @@ def update_view_admin(request, id):
     context['dataset'] = DoctorInfo.objects.all()
     return render(request, "update_view_admin.html", context)
 
+
 def update_view(request, id):
     # dictionary for initial data with
     # field names as keys
@@ -282,6 +285,7 @@ def update_view(request, id):
     context["form"] = form
     context['dataset'] = DoctorInfo.objects.all()
     return render(request, "update_view.html", context)
+
 
 def approve_view_dr(request, id):
     # dictionary for initial data with
@@ -306,7 +310,6 @@ def approve_view_dr(request, id):
     return render(request, "update_view_dc.html", context)
 
 
-
 # delete view for details
 def delete_view(request, id):
     # dictionary for initial data with
@@ -324,6 +327,7 @@ def delete_view(request, id):
         return HttpResponseRedirect("/appt")
 
     return render(request, "delete_view.html", context)
+
 
 def delete_view_admin(request, id):
     # dictionary for initial data with
@@ -379,8 +383,7 @@ def client(request):
                                            )
                 client_person.save()
 
-
-                return render(request, 'clientPage.html',{'clientObj': client_person})
+                return render(request, 'clientPage.html', {'clientObj': client_person})
 
         else:
             messages.info(request, 'passwords are not matching')
@@ -437,6 +440,28 @@ class Dummy():
         self.name = name
 
 
+def submitquery(request):
+    print("testing")
+    print(request.POST)
+    print(request.POST['patientusername'])
+    username = ""
+    count=0
+    if request.method == 'POST':
+        username = request.POST['patientusername']
+    for data in ConfirmedAppointment.objects.all():
+        if data.username == username:
+            count+=1
+
+
+    context = {}
+    context['dataset'] = ConfirmedAppointment.objects.all()
+    context['patientgen'] = username
+    context['x'] = count
+
+    response = HttpResponse(render(request, 'query.html',context))
+    return response
+
+
 def login(request):
     if request.method == 'POST':
         name = request.POST['usernameLogin']
@@ -455,9 +480,8 @@ def login(request):
         return render(request, 'login.html')
 
 
-
 def loginDr(request):
-    #print(request)
+    # print(request)
     if request.method == 'POST':
         usernameDr = request.POST['usernameLoginDr']
         passwordDr = request.POST['passwordLoginDr']

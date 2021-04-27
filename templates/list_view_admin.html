@@ -38,6 +38,7 @@
     ID number: {{ data.id }}<br/>
     Date & Time: {{ data.time }}<br/>
     Patient Email: {{ data.email }} <br/>
+    Patient username: {{ data.username }} <br/>
     Patient name: {{ data.name }}<br/>
     Doctor name: {{ data.drname }}<br/>
     Case Description: {{ data.description }}<br/>
@@ -49,6 +50,14 @@
         - - <a href="a/{{ data.id }}/delete">Delete entry</a>
         <hr/>
     {% endfor %}
+<br/>
+<br/>
+    <p > Generate report for patient</p>
+    <form action="/adminportal/a/submit" method="post">
+        {% csrf_token %}
+        <input type="text" name="patientusername" placeholder="username">
+        <button>Submit</button>
+    </form>
 
 
 
