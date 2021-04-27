@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -49,7 +50,9 @@ def clientRegProcess(request):
                                            weight=weight_client
                                            )
                 client_person.save()
-                return render(request, 'clientPage.html', {'client_person': client_person})
+                response = HttpResponse(render(request, 'clientPage.html', {'client_person': client_person}))
+                response.set_cookie('username', username_client)
+                return response
 
         else:
             messages.info(request, 'passwords are not matching')

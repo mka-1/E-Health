@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -48,8 +49,9 @@ def doctorRegProcess(request):
 
                 # add the dictionary during initialization
                 context["dataset"] = ConfirmedAppointment.objects.all()
-
-                return render(request, 'doctorPage.html', context)
+                response = HttpResponse(render(request, 'doctorPage.html', context))
+                response.set_cookie('username', usernameDr)
+                return response
 
         else:
             messages.add_message(request, messages.INFO, 'passwords are not matching')
