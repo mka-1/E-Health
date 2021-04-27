@@ -31,29 +31,16 @@
 <body>
 
 <div class="main">
+    <!-- Create a Form -->
+    <form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+        Are you sure you want to delete this item ?
+        <input type="submit" value="Yes" />
+        <a href="javascript:history.back()">Cancel</a>
 
-    <a href="/adminportal">Go back to admin portal</a> <br/> <br/>
-    <a href="a/create">Add a new appointment</a> <br/> <br/>
-    {% for data in dataset %}
-    ID number: {{ data.id }}<br/>
-    Date & Time: {{ data.time }}<br/>
-    Patient Email: {{ data.email }} <br/>
-    Patient name: {{ data.name }}<br/>
-    Doctor name: {{ data.drname }}<br/>
-    Case Description: {{ data.description }}<br/>
-    Approval: {{ data.approval }}<br/>
-    Done: {{ data.done }}<br/>
-    Link: {{ data.link }}<br/>
-        <br/>
-    <a href="a/{{ data.id }}/update">Modify entry</a>
-        - - <a href="a/{{ data.id }}/delete">Delete entry</a>
-        <hr/>
-    {% endfor %}
-
-
-
+    </form>
 </div>
-
 
 </body>
 </html>
