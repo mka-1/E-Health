@@ -13,6 +13,7 @@ class drform(forms.ModelForm):
         fields = [
             "firstname",
             "lastname",
+            "usernameDr",
             "password",
             "confirmation",
             "emailDr",

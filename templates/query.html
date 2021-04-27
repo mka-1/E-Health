@@ -29,11 +29,10 @@
 
 </head>
 <body>
-<h2 > Doctors he met with:</h2>
+<h2 > Doctors he/she met with:</h2>
 <div class="main">
 
     {% for data in dataset %}
-    {{ patientgen }}
     {% if data.username == patientgen %}
     Doctor name: {{ data.drname }}<br/>
         <br/>
