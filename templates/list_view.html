@@ -55,7 +55,7 @@
 <div class="main">
 
     {% for data in dataset %}
-    {% if data.approval == "yes" and data.name == username %}
+    {% if data.approval == "yes" and data.username == username %}
     Date & Time: {{ data.time }}<br/>
     Doctor name: {{ data.drname }}<br/>
     Case Description: {{ data.description }}<br/>
