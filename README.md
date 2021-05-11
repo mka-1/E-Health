@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/48247171/117814479-0598a000-b26d-11eb-8d3b-ec51add2b03b.png)
+
 # E-Health - EECE 430 Final Project
 
 Our E-HMS software requires a Windows 10 machine equipped with the following:
