@@ -9,5 +9,6 @@ Our E-HMS software requires a Windows 10 machine equipped with the following:
 
 
 About the project:
+
 The project is a Web application developed on Django that allows the reservation of appointments based on availability and time of doctors. Integration with Cisco Webex allows patients and doctors to meet using video audio and chat. 
 The software tool allows the registration of doctors and patients to the system. If you login as an admin, you will have the ability to create, update and delete accounts (of both doctors and patients) as well as manage appointments.
